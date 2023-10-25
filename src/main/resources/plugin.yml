@@ -1,0 +1,55 @@
+name: GrassBlockSMPPlugin
+version: '${project.version}'
+main: com.riverstone.unknown303.grassblocksmpplugin.GrassBlockSMPPlugin
+api-version: '1.20'
+authors: [Unknown_303YT, JoeyDee]
+description: The Official Plugin of the GrassBlock SMP
+commands:
+  getLDHelm:
+    description: Gives the player the Leader's Defence Helmet
+    usage: /getLDHelm
+    permission: grassblocksmpplugin.getLD
+  getLDBoots:
+      description: Gives the player the Leader's Defence Boots
+      usage: /getLDBoots
+      permission: grassblocksmpplugin.getLD
+  getLDChestplate:
+        description: Gives the player the Leader's Defence Chestplate
+        usage: /getLDChestplate
+        permission: grassblocksmpplugin.getLD
+  getLDLeggings:
+    description: Gives the player the Leader's Defence Leggings
+    usage: /getLDLeggings
+    permission: grassblocksmpplugin.getLD
+  getLDSet:
+    description: Gives the player a full set of Leader's Defence Armor
+    usage: /getLDSet
+    permission: grassblocksmpplugin.getLD
+#  enableLD:
+#    description: Enables the Leader's Refuge Custom Armor Set
+#    usage: /enableLR
+#    permission: grassblocksmpplugin.toggles
+#  disableLD:
+#      description: Disables the Leader's Refuge Custom Armor Set
+#      usage: /disableLR
+#      permission: grassblocksmpplugin.toggles
+#  ncLD:
+#    description: Disables the Leader's Refuge Custom Armor Set but Doesn't Clear it from Players
+#    usage: /ncLR
+#    permission: grassblocksmpplugin.toggles
+#  getKickSword:
+#    description: Gives the Kick Sword
+#    usage: /getKickSword
+#    permission: grassblocksmpplugin.anyone
+
+permissions:
+  grassblocksmpplugin.getLD:
+    description: Permissions for the Leader's Refuge Armor Set
+    default: op
+  grassblocksmpplugin.toggles:
+    description: Permissions for toggling features
+    default: op
+  grassblocksmpplugin.anyone:
+    description: Anyone permissions
+    default: true
+
