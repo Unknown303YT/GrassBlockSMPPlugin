@@ -4,6 +4,7 @@ import com.riverstone.unknown303.grassblocksmpplugin.commands.lrcmds.*;
 //import com.riverstone.unknown303.grassblocksmpplugin.commands.toggles.DisableLRCmd;
 //import com.riverstone.unknown303.grassblocksmpplugin.commands.toggles.EnableLRCmd;
 //import com.riverstone.unknown303.grassblocksmpplugin.commands.toggles.NoClearLRCmd;
+import com.riverstone.unknown303.grassblocksmpplugin.events.LifeEvents;
 import com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles.Variables;
 import com.riverstone.unknown303.grassblocksmpplugin.items.AdminItemsManager;
 import com.riverstone.unknown303.grassblocksmpplugin.items.LeadersDefenceManager;
@@ -43,6 +44,7 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
 //        boolean trueBoolean = true;
 
         lifeConfigMethod();
+        
         Bukkit.getLogger().info(Variables.logPrefix + "Starting GrassBlockSMP Custom Plugin...");
         Bukkit.getLogger().info(Variables.logPrefix + "Thank you to Unknown_303YT for making this for the server.");
         Bukkit.getLogger().info(Variables.logPrefix + "Enabling Leaders Defence... ");
@@ -60,6 +62,7 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
 //        Objects.requireNonNull(getCommand("enableLR")).setExecutor(new EnableLRCmd(this));
 //        Objects.requireNonNull(getCommand("disableLR")).setExecutor(new DisableLRCmd(this));
 //        getServer().getPluginManager().registerEvents(new OffHandSwap(), this);
+        getServer().getPluginManager().registerEvents(new LifeEvents(this), this);
 //        String configLRValue = String.valueOf(config.getDefaults().getString("leadersdefence"));
 //        if (configLRValue == "enabled") {
 //            Variables.leadersDefenceEnabled = 1;
