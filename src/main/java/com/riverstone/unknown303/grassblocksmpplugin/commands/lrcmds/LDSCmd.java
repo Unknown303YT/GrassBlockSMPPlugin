@@ -1,8 +1,7 @@
 package com.riverstone.unknown303.grassblocksmpplugin.commands.lrcmds;
 
-import com.riverstone.unknown303.grassblocksmpplugin.Variables;
+import com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles.Variables;
 import com.riverstone.unknown303.grassblocksmpplugin.items.LeadersDefenceManager;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

@@ -1,7 +1,7 @@
 //package com.riverstone.unknown303.grassblocksmpplugin.commands.toggles;
 //
 //import com.riverstone.unknown303.grassblocksmpplugin.GrassBlockSMPPlugin;
-//import com.riverstone.unknown303.grassblocksmpplugin.Variables;
+//import com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles.Variables;
 //import org.bukkit.ChatColor;
 //import org.bukkit.command.Command;
 //import org.bukkit.command.CommandExecutor;

@@ -4,16 +4,31 @@ import com.riverstone.unknown303.grassblocksmpplugin.commands.lrcmds.*;
 //import com.riverstone.unknown303.grassblocksmpplugin.commands.toggles.DisableLRCmd;
 //import com.riverstone.unknown303.grassblocksmpplugin.commands.toggles.EnableLRCmd;
 //import com.riverstone.unknown303.grassblocksmpplugin.commands.toggles.NoClearLRCmd;
+import com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles.Variables;
 import com.riverstone.unknown303.grassblocksmpplugin.items.AdminItemsManager;
 import com.riverstone.unknown303.grassblocksmpplugin.items.LeadersDefenceManager;
+import com.riverstone.unknown303.grassblocksmpplugin.items.LifeItemsManager;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 
 public final class GrassBlockSMPPlugin extends JavaPlugin {
     //public FileConfiguration config = this.getConfig();
-
+    private void lifeConfigMethod() {
+        File lifeConfigFile = new File(getDataFolder(), "lifeConfig.yml");
+        FileConfiguration lifeConfig = YamlConfiguration.loadConfiguration(lifeConfigFile);
+        try {
+            lifeConfig.save(lifeConfigFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -26,12 +41,21 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
 //        saveConfig();
 //        reloadConfig();
 //        boolean trueBoolean = true;
+
+        lifeConfigMethod();
         Bukkit.getLogger().info(Variables.logPrefix + "Starting GrassBlockSMP Custom Plugin...");
         Bukkit.getLogger().info(Variables.logPrefix + "Thank you to Unknown_303YT for making this for the server.");
         Bukkit.getLogger().info(Variables.logPrefix + "Enabling Leaders Defence... ");
         LeadersDefenceManager.init();
-        AdminItemsManager.init();
         Bukkit.getLogger().info(Variables.logPrefix + "Leaders Defence Enabled");
+
+        Bukkit.getLogger().info(Variables.logPrefix + "Enabling Life Items... ");
+        LifeItemsManager.init();
+        Bukkit.getLogger().info(Variables.logPrefix + "Life Items Enabled");
+
+        Bukkit.getLogger().info(Variables.logPrefix + "Enabling Admin Items... ");
+        AdminItemsManager.init();
+        Bukkit.getLogger().info(Variables.logPrefix + "Admin Items Enabled");
 //        Objects.requireNonNull(getCommand("ncLR")).setExecutor(new NoClearLRCmd(this));
 //        Objects.requireNonNull(getCommand("enableLR")).setExecutor(new EnableLRCmd(this));
 //        Objects.requireNonNull(getCommand("disableLR")).setExecutor(new DisableLRCmd(this));
@@ -60,7 +84,6 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
         //Bukkit.getBanList(BanList.Type.NAME).addBan("Unknown_303YT", "§4§lYou Have Lost All Your Lives.\n§r§fYou can be unbanned by a player using the Beacon of Mercy.", null, "console");
         //Bukkit.getBanList(BanList.Type.NAME).pardon("Unknown_303YT");
 
-//        loopcmd();
     }
 
     @Override
@@ -68,32 +91,12 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-//    public void loopCmd() {
-//        Bukkit.getScheduler().scheduleSyncDelayedTask(this, new Runnable(){
-//            @Override
-//            public void run(){
-//              try {
-//                  wait(60000);
-//              } catch (InterruptedException e) {
-//                  throw new RuntimeException(e);
-//              }
-//              while (true) {
-//                    if (Variables.leadersDefenesEnabled == 0) {
-//                        for (Player player : Bukkit.getOnlinePlayers()) {
-//                            player.getInventory().removeItem(LeadersDefenceManager.leadersHat);
-//                            player.getInventory().removeItem(LeadersDefenceManager.leadersShirt);
-//                            player.getInventory().removeItem(LeadersDefenceManager.leadersPants);
-//                            player.getInventory().removeItem(LeadersDefenceManager.leadersShoes);
-//                            try {
-//                                wait(60000);
-//                            } catch (InterruptedException e) {
-//                                throw new RuntimeException(e);
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        });
-//    }
+    public static void getUniqueId(FileConfiguration lifeconfig) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            String uuid = player.getUniqueId().toString();
+            lifeconfig.addDefault(uuid + "-lives", "7");
+        }
+    }
+
 }
 

@@ -5,7 +5,7 @@
 //import org.bukkit.command.Command;
 //import org.bukkit.command.CommandExecutor;
 //import org.bukkit.command.CommandSender;
-//import com.riverstone.unknown303.grassblocksmpplugin.Variables;
+//import com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles.Variables;
 //import org.bukkit.configuration.file.FileConfiguration;
 //
 //public class EnableLRCmd implements CommandExecutor {

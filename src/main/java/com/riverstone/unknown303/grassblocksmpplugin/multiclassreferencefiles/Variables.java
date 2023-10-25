@@ -1,7 +1,6 @@
-package com.riverstone.unknown303.grassblocksmpplugin;
+package com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles;
 
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.file.FileConfiguration;
 
 public class Variables {
     public static int leadersDefenceEnabled;
