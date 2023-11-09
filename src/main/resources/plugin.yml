@@ -7,40 +7,37 @@ description: The Official Plugin of the GrassBlock SMP
 commands:
   getLDHelm:
     description: Gives the player the Leader's Defence Helmet
-    usage: /getLDHelm
+    usage: /<command>
     permission: grassblocksmpplugin.getLD
   getLDBoots:
       description: Gives the player the Leader's Defence Boots
-      usage: /getLDBoots
+      usage: /<command>
       permission: grassblocksmpplugin.getLD
   getLDChestplate:
         description: Gives the player the Leader's Defence Chestplate
-        usage: /getLDChestplate
+        usage: /<command>
         permission: grassblocksmpplugin.getLD
   getLDLeggings:
     description: Gives the player the Leader's Defence Leggings
-    usage: /getLDLeggings
+    usage: /<command>
     permission: grassblocksmpplugin.getLD
   getLDSet:
     description: Gives the player a full set of Leader's Defence Armor
-    usage: /getLDSet
+    usage: /<command>
     permission: grassblocksmpplugin.getLD
-#  enableLD:
-#    description: Enables the Leader's Refuge Custom Armor Set
-#    usage: /enableLR
-#    permission: grassblocksmpplugin.toggles
-#  disableLD:
-#      description: Disables the Leader's Refuge Custom Armor Set
-#      usage: /disableLR
-#      permission: grassblocksmpplugin.toggles
-#  ncLD:
-#    description: Disables the Leader's Refuge Custom Armor Set but Doesn't Clear it from Players
-#    usage: /ncLR
-#    permission: grassblocksmpplugin.toggles
-#  getKickSword:
-#    description: Gives the Kick Sword
-#    usage: /getKickSword
-#    permission: grassblocksmpplugin.anyone
+  withdraw:
+    description: Withdraws the specified amount of lives
+    usage: /<command>
+    permission: grassblocksmpplugin.anyone
+  toggle:
+    description: Commands to toggle features of GrassBlockSMPPlugin
+    usage: /<command>
+    permission: grassblocksmpplugin.toggles
+  frz:
+    description: Freeze people
+    usage: /<command>
+    permission: grassblocksmpplugin.admin
+
 
 permissions:
   grassblocksmpplugin.getLD:
@@ -52,4 +49,7 @@ permissions:
   grassblocksmpplugin.anyone:
     description: Anyone permissions
     default: true
+  grassblocksmpplugin.admin:
+    description: Permissions for admins
+    default: op
 
