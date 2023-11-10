@@ -1,5 +1,5 @@
 name: GrassBlockSMPPlugin
-version: '2'
+version: '2.5'
 main: com.riverstone.unknown303.grassblocksmpplugin.GrassBlockSMPPlugin
 api-version: '1.20'
 authors: [Unknown_303YT, JoeyDee]

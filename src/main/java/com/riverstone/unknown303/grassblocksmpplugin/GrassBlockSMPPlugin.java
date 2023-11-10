@@ -27,6 +27,9 @@ import java.util.Objects;
 
 public final class GrassBlockSMPPlugin extends JavaPlugin {
     private static GrassBlockSMPPlugin plugin;
+    public GrassBlockSMPPlugin() {
+        plugin = this;
+    }
 
     public static boolean fatal;
     public static File lifeConfigFile = new File(plugin.getDataFolder(), "lifeConfig.yml");
