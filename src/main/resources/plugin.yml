@@ -8,23 +8,27 @@ commands:
   getLDHelm:
     description: Gives the player the Leader's Defence Helmet
     usage: /<command>
-    permission: grassblocksmpplugin.getLD
+    permission: grassblocksmpplugin.getTeamItems
   getLDBoots:
       description: Gives the player the Leader's Defence Boots
       usage: /<command>
-      permission: grassblocksmpplugin.getLD
+      permission: grassblocksmpplugin.getTeamItems
   getLDChestplate:
         description: Gives the player the Leader's Defence Chestplate
         usage: /<command>
-        permission: grassblocksmpplugin.getLD
+        permission: grassblocksmpplugin.getTeamItems
   getLDLeggings:
     description: Gives the player the Leader's Defence Leggings
     usage: /<command>
-    permission: grassblocksmpplugin.getLD
+    permission: grassblocksmpplugin.getTeamItems
   getLDSet:
     description: Gives the player a full set of Leader's Defence Armor
     usage: /<command>
-    permission: grassblocksmpplugin.getLD
+    permission: grassblocksmpplugin.getTeamItems
+  getLShield:
+    description: Gives the player a Loner's Shield
+    usage: /<command>
+    permission: grassblocksmpplugin.getTeamItems
   withdraw:
     description: Withdraws the specified amount of lives
     usage: /<command>
@@ -40,7 +44,7 @@ commands:
 
 
 permissions:
-  grassblocksmpplugin.getLD:
+  grassblocksmpplugin.getTeamItems:
     description: Permissions for the Leader's Refuge Armor Set
     default: op
   grassblocksmpplugin.toggles:

@@ -5,6 +5,7 @@ import com.riverstone.unknown303.grassblocksmpplugin.GrassBlockSMPPlugin;
 import com.riverstone.unknown303.grassblocksmpplugin.guis.UnbanScreen;
 import com.riverstone.unknown303.grassblocksmpplugin.items.LifeItemsManager;
 import org.bukkit.*;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -25,12 +26,11 @@ public class LifeEvents implements Listener {
     public static List<OfflinePlayer> lifeBannedPlayers = new ArrayList<>();
     public static List<OfflinePlayer> emptyPlayers = new ArrayList<>();
     private GrassBlockSMPPlugin pl;
-    private FileConfiguration lifeConfig;
-    private File lifeConfigFile;
-    public LifeEvents(GrassBlockSMPPlugin plugin) {
-        plugin = pl;
-        lifeConfig = GrassBlockSMPPlugin.lifeConfig;
-        lifeConfigFile = GrassBlockSMPPlugin.lifeConfigFile;
+    private FileConfiguration newLifeConfig;
+    private File newLifeConfigFile;
+    public LifeEvents(FileConfiguration lifeConfig, File lifeConfigFile) {
+        newLifeConfig = lifeConfig;
+        newLifeConfigFile = lifeConfigFile;
         lifeConfig.addDefault("lifeBannedPlayers", emptyPlayers);
         try {
             lifeConfig.save(lifeConfigFile);
@@ -44,26 +44,36 @@ public class LifeEvents implements Listener {
         String playerName = player.getName().toString();
         Bukkit.getLogger().info(playerName);
         OfflinePlayer offlinePlayer = (OfflinePlayer) player;
-        lifeConfig = GrassBlockSMPPlugin.lifeConfig;
-        lifeConfigFile = GrassBlockSMPPlugin.lifeConfigFile;
         if (GrassBlockSMPPlugin.fatal == true) {
-            int lives = lifeConfig.getInt(player.getUniqueId().toString() + "-lives");
+            int lives = newLifeConfig.getInt(player.getUniqueId().toString() + "-lives");
             if (lives == 1) {
                 int affectedLives = 0;
                 lives = 0;
                 lifeBannedPlayers.add(offlinePlayer);
                 Bukkit.getBanList(BanList.Type.NAME).addBan(playerName, "§4§lYou Have Lost All Your Lives.\n§r§fYou can be unbanned by a player using the Beacon of Revival.", null, "console");
-                lifeConfig.set(player.getUniqueId().toString() + "-lives", 0);
-                lifeConfig.set("lifeBannedPlayers", lifeBannedPlayers);
+                newLifeConfig.set(player.getUniqueId().toString() + "-lives", 0);
+                newLifeConfig.set("lifeBannedPlayers", lifeBannedPlayers);
             } else {
                 int affectedLives = lives - 1;
-                lifeConfig.set(player.getUniqueId().toString() + "-lives", affectedLives);
+                newLifeConfig.set(player.getUniqueId().toString() + "-lives", affectedLives);
                 try {
-                    lifeConfig.save(lifeConfigFile);
+                    newLifeConfig.save(newLifeConfigFile);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 lives = affectedLives;
+                try {
+                    newLifeConfig.save(newLifeConfigFile);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                try {
+                    newLifeConfig.load(newLifeConfigFile);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InvalidConfigurationException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }

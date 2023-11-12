@@ -18,6 +18,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,20 +29,17 @@ import java.util.List;
 import java.util.Objects;
 
 public final class GrassBlockSMPPlugin extends JavaPlugin {
-    private static GrassBlockSMPPlugin plugin;
-    public GrassBlockSMPPlugin() {
-        plugin = this;
-    }
-
-    public static boolean fatal;
-    public static File lifeConfigFile = new File(plugin.getDataFolder(), "lifeConfig.yml");
-    public static FileConfiguration lifeConfig = YamlConfiguration.loadConfiguration(lifeConfigFile);
-
-    public static File configFile = new File(plugin.getDataFolder(), "config.yml");
-    public static FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
+   public static boolean fatal;
     @Override
     public void onEnable() {
-        // Plugin startup logic
+
+        File configFile = new File(this.getDataFolder(), "config.yml");
+        FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
+
+        File lifeConfigFile = new File(this.getDataFolder(), "lifeConfig.yml");
+        FileConfiguration lifeConfig = YamlConfiguration.loadConfiguration(lifeConfigFile);
+
+
         try {
             lifeConfig.save(lifeConfigFile);
             config.save(configFile);
@@ -82,12 +82,12 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
         Bukkit.getLogger().info(Variables.logPrefix + "Unban GUI Enabled");
 
         Bukkit.getLogger().info(Variables.logPrefix + "Enabling Event Classes... ");
-        Bukkit.getServer().getPluginManager().registerEvents(new LifeEvents(this), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new LifeEvents(lifeConfig, lifeConfigFile), this);
         Bukkit.getServer().getPluginManager().registerEvents(new ItemEvents(), this);
         Bukkit.getLogger().info(Variables.logPrefix + "Event Classes Enabled");
 
         Bukkit.getLogger().info(Variables.logPrefix + "Enabling Command Classes... ");
-        Objects.requireNonNull(getCommand("withdraw")).setExecutor(new WithdrawCommand(this));
+        Objects.requireNonNull(getCommand("withdraw")).setExecutor(new WithdrawCommand(lifeConfig, lifeConfigFile));
         Objects.requireNonNull(getCommand("getLDHelm")).setExecutor(new LDHCmd());
         Objects.requireNonNull(getCommand("getLDBoots")).setExecutor(new LDBCmd());
         Objects.requireNonNull(getCommand("getLDChestplate")).setExecutor(new LDCCmd());
