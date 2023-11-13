@@ -18,9 +18,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitScheduler;
-import org.bukkit.scheduler.BukkitTask;
 
 import java.io.File;
 import java.io.IOException;
@@ -98,34 +95,38 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
         Bukkit.getLogger().info(Variables.logPrefix + "Command Classes Enabled");
 
         LifeEvents.lifeBannedPlayers = (List<OfflinePlayer>) lifeConfig.get("lifeBannedPlayers");
-
-        try {
-            wait(60000);
-            loopFatal();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        if (LifeEvents.lifeBannedPlayers == null) {
+            Bukkit.getLogger().info(Variables.logPrefix + "Error: lifeBannedPlayers == null");
         }
 
+        Bukkit.getScheduler().runTaskLater(this, loopFatal(), 1200);
+
     }
+
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
         Bukkit.getLogger().info(Variables.logPrefix + "Shutting Down GrassBlockSMP Custom Plugin...");
+
     }
 
-    public void loopFatal() {
+    public Runnable loopFatal() {
         while (true) {
             fatal = false;
-            try {
-                wait(10800000);
-                fatal = true;
-                wait(3600000);
-                fatal = false;
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            Bukkit.getScheduler().runTaskLater(this, fatalTrue(), 216000);
+            Bukkit.getScheduler().runTaskLater(this, fatalFalse(), 72000);
         }
+    }
+
+    public Runnable fatalFalse() {
+        fatal = false;
+        return null;
+    }
+
+    public Runnable fatalTrue() {
+        fatal = true;
+        return null;
     }
 
     public void checkTime() {
@@ -161,48 +162,48 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
                                             player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 30 Seconds!");
                                         }
                                         try {
-                                            wait(15000);
+                                            Bukkit.getScheduler().wait(15000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 15 Seconds!");
                                             }
-                                            wait(5000);
+                                            Bukkit.getScheduler().wait(5000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 10 Seconds!");
                                             }
                                             // TEN SECOND COUNTDOWN
-                                            wait(1000);
+                                            Bukkit.getScheduler().wait(1000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 9 Seconds!");
                                             }
-                                            wait(1000);
+                                            Bukkit.getScheduler().wait(1000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 8 Seconds!");
                                             }
-                                            wait(1000);
+                                            Bukkit.getScheduler().wait(1000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 7 Seconds!");
                                             }
-                                            wait(1000);
+                                            Bukkit.getScheduler().wait(1000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 6 Seconds!");
                                             }
-                                            wait(1000);
+                                            Bukkit.getScheduler().wait(1000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 5 Seconds!");
                                             }
-                                            wait(1000);
+                                            Bukkit.getScheduler().wait(1000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 4 Seconds!");
                                             }
-                                            wait(1000);
+                                            Bukkit.getScheduler().wait(1000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 3 Seconds!");
                                             }
-                                            wait(1000);
+                                            Bukkit.getScheduler().wait(1000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 2 Seconds!");
                                             }
-                                            wait(1000);
+                                            Bukkit.getScheduler().wait(1000);
                                             for (Player player : Bukkit.getOnlinePlayers()) {
                                                 player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 1 Seconds!");
                                             }
@@ -285,7 +286,7 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
                 }
             }
             try {
-                wait(60000);
+                Bukkit.getScheduler().wait(60000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
