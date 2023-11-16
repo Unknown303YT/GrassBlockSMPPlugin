@@ -20,10 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnbanScreen implements InventoryHolder, Listener {
-    private static Inventory gui;
+    private static Inventory gui = Bukkit.createInventory(new UnbanScreen(), 3 * 9, "Unban A Player");
 
     public static void init() {
-        gui = Bukkit.createInventory(new UnbanScreen(), 3 * 9, "Unban A Player"); //4*9 max
         int lbpLSize = LifeEvents.lifeBannedPlayers.size();
         List<OfflinePlayer> playersNeedHead = new ArrayList<>();
         playersNeedHead.addAll(LifeEvents.lifeBannedPlayers);

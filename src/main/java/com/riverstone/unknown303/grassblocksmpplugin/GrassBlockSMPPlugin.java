@@ -18,6 +18,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
@@ -99,7 +100,21 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
             Bukkit.getLogger().info(Variables.logPrefix + "Error: lifeBannedPlayers == null");
         }
 
-        Bukkit.getScheduler().runTaskLater(this, loopFatal(), 1200);
+        Bukkit.getScheduler().runTaskLater(this, () -> {
+            while (true) {
+                fatal = false;
+                Bukkit.getScheduler().runTaskLater(this, () -> {fatal = true;}, 216000);
+                Bukkit.getScheduler().runTaskLater(this, () -> {fatal = false;}, 72000);
+            }
+        }, 1200);
+
+        new BukkitRunnable() {
+            public void run() {
+
+            }
+        }.runTaskAsynchronously(this);  {
+
+        }
 
     }
 
@@ -111,186 +126,64 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
 
     }
 
-    public Runnable loopFatal() {
-        while (true) {
-            fatal = false;
-            Bukkit.getScheduler().runTaskLater(this, fatalTrue(), 216000);
-            Bukkit.getScheduler().runTaskLater(this, fatalFalse(), 72000);
-        }
-    }
-
-    public Runnable fatalFalse() {
-        fatal = false;
-        return null;
-    }
-
-    public Runnable fatalTrue() {
-        fatal = true;
-        return null;
-    }
-
     public void checkTime() {
         // CHECK WHEN TO SHUT DOWN SERVER
-        int hour = LocalDateTime.now().getHour();
-        int minute = LocalDateTime.now().getMinute();
-        while (true) {
-            if (hour == 21) {
-                if (minute == 0) {
-                    Bukkit.getServer().shutdown();
+        new BukkitRunnable() {
+
+            public void run() {
+                LocalDateTime now = LocalDateTime.now();
+                int hour = now.getHour();
+                int minute = now.getMinute();
+                int second = now.getSecond();
+
+                //Not hour 20? Then we don't need to run the rest of the code
+                if(hour != 20)
+                    return;
+
+                //At this point we no longer need this runnable
+                //We start a new runnable for the final minute countdown and shut down this one
+                if(minute == 59 && second == 30) {
+                    sendCountdownMessages();
+                    this.cancel();
+                    return;
                 }
-            } else {
-                int second = LocalDateTime.now().getSecond();
-                if (hour == 20) {
-                    if (minute == 45) {
-                        for (Player player : Bukkit.getOnlinePlayers()) {
-                            player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 15 Minutes!");
-                        }
-                    } else {
-                        if (minute == 50) {
-                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 10 Minutes!");
-                            }
-                        } else {
-                            if (minute == 55) {
-                                for (Player player : Bukkit.getOnlinePlayers()) {
-                                    player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 5 Minutes!");
-                                }
-                            } else {
-                                if (minute == 59) {
-                                    if (second == 30) {
-                                        for (Player player : Bukkit.getOnlinePlayers()) {
-                                            player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 30 Seconds!");
-                                        }
-                                        try {
-                                            Bukkit.getScheduler().wait(15000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 15 Seconds!");
-                                            }
-                                            Bukkit.getScheduler().wait(5000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 10 Seconds!");
-                                            }
-                                            // TEN SECOND COUNTDOWN
-                                            Bukkit.getScheduler().wait(1000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 9 Seconds!");
-                                            }
-                                            Bukkit.getScheduler().wait(1000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 8 Seconds!");
-                                            }
-                                            Bukkit.getScheduler().wait(1000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 7 Seconds!");
-                                            }
-                                            Bukkit.getScheduler().wait(1000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 6 Seconds!");
-                                            }
-                                            Bukkit.getScheduler().wait(1000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 5 Seconds!");
-                                            }
-                                            Bukkit.getScheduler().wait(1000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 4 Seconds!");
-                                            }
-                                            Bukkit.getScheduler().wait(1000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 3 Seconds!");
-                                            }
-                                            Bukkit.getScheduler().wait(1000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 2 Seconds!");
-                                            }
-                                            Bukkit.getScheduler().wait(1000);
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 1 Seconds!");
-                                            }
-                                        } catch (InterruptedException e) {
-                                            throw new RuntimeException(e);
-                                        }
-                                    } else {
-                                        if (second == 45) {
-                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 15 Seconds!");
-                                            }
-                                        } else {
-                                            if (second == 50) {
-                                                for (Player player : Bukkit.getOnlinePlayers()) {
-                                                    player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 10 Seconds!");
-                                                }
-                                            } else {
-                                                //TEN SECOND CHECK
-                                                if (second == 51) {
-                                                    for (Player player : Bukkit.getOnlinePlayers()) {
-                                                        player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 9 Seconds!");
-                                                    }
-                                                } else {
-                                                    if (second == 52) {
-                                                        for (Player player : Bukkit.getOnlinePlayers()) {
-                                                            player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 8 Seconds!");
-                                                        }
-                                                    } else {
-                                                        if (second == 53) {
-                                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 7 Seconds!");
-                                                            }
-                                                        } else {
-                                                            if (second == 54) {
-                                                                for (Player player : Bukkit.getOnlinePlayers()) {
-                                                                    player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 6 Seconds!");
-                                                                }
-                                                            } else {
-                                                                if (second == 55) {
-                                                                    for (Player player : Bukkit.getOnlinePlayers()) {
-                                                                        player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 5 Seconds!");
-                                                                    }
-                                                                }
-                                                                else {
-                                                                    if (second == 56) {
-                                                                        for (Player player : Bukkit.getOnlinePlayers()) {
-                                                                            player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 4 Seconds!");
-                                                                        }
-                                                                    } else {
-                                                                        if (second == 57) {
-                                                                            for (Player player : Bukkit.getOnlinePlayers()) {
-                                                                                player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 3 Seconds!");
-                                                                            }
-                                                                        } else {
-                                                                            if (second == 58) {
-                                                                                for (Player player : Bukkit.getOnlinePlayers()) {
-                                                                                    player.sendMessage(ChatColor.YELLOW + "Server Shutting Down in 2 Seconds!");
-                                                                                }
-                                                                            } else {
-                                                                                if (second == 59) {
-                                                                                    for (Player player : Bukkit.getOnlinePlayers()) {
-                                                                                        player.sendMessage(ChatColor.YELLOW + "Server Shutting Down.");
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+
+                //More compact way for the big counter
+                //You might want to use a switch case here instead if it's hard to read/understand
+                Integer countdown = minute % 5 == 0 && minute >= 45 && minute <= 55 ? 60 - minute : null;
+
+                if(countdown != null)
+                    sendMessageToPlayers("Server Shutting Down in " + countdown + " Minutes!");
             }
-            try {
-                Bukkit.getScheduler().wait(60000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+
+            //Task runs every 1200 ticks = 1 minute
+        }.runTaskTimer(this, 0, 1200);
+    }
+
+    //Using another method to send the message
+    //We do this because it keeps the code cleaner since we don't use extra lines of codes
+    private void sendMessageToPlayers(String message) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.sendMessage(ChatColor.YELLOW + message);
         }
+    }
+
+    private void sendCountdownMessages(){
+        new BukkitRunnable() {
+
+            int i = 30;
+            public void run() {
+                if(i < 0) {
+                    this.cancel();
+                    Bukkit.getServer().shutdown();
+                    return;
+                }
+
+                if((i == 30 || i == 15 || i <= 10))
+                    sendMessageToPlayers("Server Shutting Down in " + i-- + " Seconds!");
+            }
+
+        }.runTaskTimer(this, 0, 20);
     }
 
 }
