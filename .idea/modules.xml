@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GrassBlockSMPPlugin.iml" filepath="$PROJECT_DIR$/GrassBlockSMPPlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grassblocksmpplugin.iml" filepath="$PROJECT_DIR$/grassblocksmpplugin.iml" />
     </modules>
   </component>
 </project>

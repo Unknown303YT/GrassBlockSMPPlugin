@@ -2,7 +2,7 @@
   <artifact type="jar" name="GrassBlockPlugin:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/GrassBlockPlugin_jar</output-path>
     <root id="archive" name="GrassBlockPlugin.jar">
-      <element id="module-output" name="GrassBlockSMPPlugin" />
+      <element id="module-output" name="grassblocksmpplugin" />
       <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/plugin.yml" />
     </root>
   </artifact>

@@ -28,8 +28,11 @@ import java.util.Objects;
 
 public final class GrassBlockSMPPlugin extends JavaPlugin {
    public static boolean fatal;
+   public static GrassBlockSMPPlugin thisPlugin;
     @Override
     public void onEnable() {
+
+        thisPlugin = this;
 
         File configFile = new File(this.getDataFolder(), "config.yml");
         FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
@@ -100,13 +103,23 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
             Bukkit.getLogger().info(Variables.logPrefix + "Error: lifeBannedPlayers == null");
         }
 
-        Bukkit.getScheduler().runTaskLater(this, () -> {
-            while (true) {
-                fatal = false;
-                Bukkit.getScheduler().runTaskLater(this, () -> {fatal = true;}, 216000);
-                Bukkit.getScheduler().runTaskLater(this, () -> {fatal = false;}, 72000);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        fatal = true;
+                        new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                fatal = false;
+                            }
+                        }.runTaskLater(thisPlugin, 72000);
+                    }
+                }.runTaskLater(thisPlugin, 216000);
             }
-        }, 1200);
+        }.runTaskTimer(this, 1L, 20L);
 
         new BukkitRunnable() {
             public void run() {
@@ -137,8 +150,11 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
                 int second = now.getSecond();
 
                 //Not hour 20? Then we don't need to run the rest of the code
-                if(hour != 20)
-                    return;
+                if(hour != 20) {
+                    if (hour != 21) {
+                        return;
+                    }
+                }
 
                 //At this point we no longer need this runnable
                 //We start a new runnable for the final minute countdown and shut down this one

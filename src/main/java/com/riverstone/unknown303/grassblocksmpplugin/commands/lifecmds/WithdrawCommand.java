@@ -28,13 +28,14 @@ public class WithdrawCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
             if (!(sender instanceof Player)) {
                 sender.sendMessage(ChatColor.RED + "Only Players Can Use This Command!");
+                return true;
             }
             assert sender instanceof Player;
                 Player player = (Player) sender;
                 if (args.length == 1) {
                     int withdrawnLives = Integer.parseInt(args[0]);
                     int newLives = newLifeConfig.getInt(player.getUniqueId().toString() + "-lives");
-                    for (int i = 0; i <= newLives; i++) {
+                    for (int i = 0; i < withdrawnLives; i++) {
                         newLifeConfig.set(player.getUniqueId().toString() + "-lives", newLives - 1);
                         player.getInventory().addItem(LifeItemsManager.life);
                     }

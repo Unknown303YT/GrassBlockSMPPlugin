@@ -1,5 +1,6 @@
 package com.riverstone.unknown303.grassblocksmpplugin.events;
 
+import com.riverstone.unknown303.grassblocksmpplugin.GrassBlockSMPPlugin;
 import com.riverstone.unknown303.grassblocksmpplugin.items.OnceoffItemsManager;
 import com.riverstone.unknown303.grassblocksmpplugin.items.TeamItemsManager;
 import org.bukkit.entity.HumanEntity;
@@ -13,6 +14,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +42,12 @@ public class ItemEvents implements Listener {
             if (event.getItem().equals(playerEntity.getInventory().getItemInOffHand())) {
                 if (event.getItem().getItemMeta().equals(TeamItemsManager.lonersShield.getItemMeta())) {
                     playerEntity.addPotionEffect(PotionEffectType.SATURATION.createEffect(300, 3));
-                    try {
-                        wait(270000);
-                        lShieldInvChecks(event);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            lShieldInvChecks(event);
+                        }
+                    }.runTaskLater(GrassBlockSMPPlugin.thisPlugin, 10800);
                 }
             }
         } else {

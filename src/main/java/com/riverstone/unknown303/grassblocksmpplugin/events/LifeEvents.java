@@ -44,9 +44,11 @@ public class LifeEvents implements Listener {
         String playerName = player.getName().toString();
         Bukkit.getLogger().info(playerName);
         OfflinePlayer offlinePlayer = (OfflinePlayer) player;
-        if (GrassBlockSMPPlugin.fatal == true) {
+        World currentWorld = player.getWorld();
+        if (GrassBlockSMPPlugin.fatal) {
+            currentWorld.dropItemNaturally(player.getLocation(), LifeItemsManager.life);
             int lives = newLifeConfig.getInt(player.getUniqueId().toString() + "-lives");
-            if (lives == 1) {
+            if (lives >= 1) {
                 int affectedLives = 0;
                 lives = 0;
                 lifeBannedPlayers.add(offlinePlayer);
@@ -131,21 +133,22 @@ public class LifeEvents implements Listener {
     @EventHandler
     public void onInvClick(InventoryClickEvent event) {
         if (event.getClickedInventory() == null) {return; }
-        if (event.getClickedInventory().getHolder() instanceof UnbanScreen) {
-            event.setCancelled(true);
-            Player player = (Player) event.getWhoClicked();
-            if (event.getCurrentItem() == null) {
-                return;
-            }
-            else if (event.getCurrentItem().equals(Material.GRAY_STAINED_GLASS_PANE)) {
-                return;
-            }
-            else if (event.getCurrentItem().equals(Material.BARRIER)) {
-                player.closeInventory();
-            }
-            else if (event.getCurrentItem().equals(Material.OAK_SIGN)) {
+        if (event.getClickedInventory().getLocation() == null) {
+            if (event.getClickedInventory().getHolder() instanceof UnbanScreen) {
+                event.setCancelled(true);
+                Player player = (Player) event.getWhoClicked();
+                if (event.getCurrentItem() == null) {
+                    return;
+                } else if (event.getCurrentItem().equals(Material.GRAY_STAINED_GLASS_PANE)) {
+                    return;
+                } else if (event.getCurrentItem().equals(Material.BARRIER)) {
+                    player.closeInventory();
+                } else if (event.getCurrentItem().equals(Material.OAK_SIGN)) {
 
+                }
             }
+        } else {
+            return;
         }
     }
 
