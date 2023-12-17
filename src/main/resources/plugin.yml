@@ -41,6 +41,10 @@ commands:
     description: Freeze people
     usage: /<command>
     permission: grassblocksmpplugin.admin
+  name:
+    description: Set Custom Display Names
+    usage: /<command>
+    permission: grassblocksmpplugin.admin
 
 
 permissions:

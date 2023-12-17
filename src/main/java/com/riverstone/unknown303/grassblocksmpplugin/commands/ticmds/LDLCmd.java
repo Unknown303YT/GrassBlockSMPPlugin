@@ -1,6 +1,6 @@
 package com.riverstone.unknown303.grassblocksmpplugin.commands.ticmds;
 
-import com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles.Variables;
+import com.riverstone.unknown303.grassblocksmpplugin.references.Variables;
 import com.riverstone.unknown303.grassblocksmpplugin.items.TeamItemsManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

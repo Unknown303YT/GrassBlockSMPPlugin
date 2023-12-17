@@ -1,6 +1,6 @@
 package com.riverstone.unknown303.grassblocksmpplugin.commands.admincmds.toggles;
 
-import com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles.Variables;
+import com.riverstone.unknown303.grassblocksmpplugin.references.Variables;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

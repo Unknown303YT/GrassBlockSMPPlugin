@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnbanScreen implements InventoryHolder, Listener {
-    private static Inventory gui = Bukkit.createInventory(new UnbanScreen(), 3 * 9, "Unban A Player");
+    private static Inventory gui = Bukkit.createInventory(new UnbanScreen(), 27, "Unban A Player");
 
     public static void init() {
         int lbpLSize = LifeEvents.lifeBannedPlayers.size();
@@ -32,8 +32,8 @@ public class UnbanScreen implements InventoryHolder, Listener {
                 gui.setItem(gui.firstEmpty(), skull);
 
             }
-            gui.setItem(35, LifeItemsManager.cancelBarrier);
-            for (int blankPanesNeeded = (35 - lbpLSize); blankPanesNeeded < 35; blankPanesNeeded++) {
+            gui.setItem(26, LifeItemsManager.cancelBarrier);
+            for (int blankPanesNeeded = (26 - lbpLSize); blankPanesNeeded < 26; blankPanesNeeded++) {
                 gui.setItem(blankPanesNeeded, LifeItemsManager.blankPane);
             }
         }

@@ -1,13 +1,15 @@
 package com.riverstone.unknown303.grassblocksmpplugin;
 
+import com.jeff_media.armorequipevent.ArmorEquipEvent;
 import com.riverstone.unknown303.grassblocksmpplugin.commands.admincmds.toggles.ToggleTI;
 import com.riverstone.unknown303.grassblocksmpplugin.commands.lifecmds.WithdrawCommand;
 import com.riverstone.unknown303.grassblocksmpplugin.commands.ticmds.*;
 import com.riverstone.unknown303.grassblocksmpplugin.events.ItemEvents;
 import com.riverstone.unknown303.grassblocksmpplugin.events.LifeEvents;
+import com.riverstone.unknown303.grassblocksmpplugin.events.MiscEvents;
 import com.riverstone.unknown303.grassblocksmpplugin.guis.UnbanScreen;
 import com.riverstone.unknown303.grassblocksmpplugin.items.OnceoffItemsManager;
-import com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles.Variables;
+import com.riverstone.unknown303.grassblocksmpplugin.references.Variables;
 import com.riverstone.unknown303.grassblocksmpplugin.items.AdminItemsManager;
 import com.riverstone.unknown303.grassblocksmpplugin.items.TeamItemsManager;
 import com.riverstone.unknown303.grassblocksmpplugin.items.LifeItemsManager;
@@ -39,6 +41,8 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
 
         File lifeConfigFile = new File(this.getDataFolder(), "lifeConfig.yml");
         FileConfiguration lifeConfig = YamlConfiguration.loadConfiguration(lifeConfigFile);
+
+        ArmorEquipEvent.registerListener(this);
 
 
         try {
@@ -83,12 +87,13 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
         Bukkit.getLogger().info(Variables.logPrefix + "Unban GUI Enabled");
 
         Bukkit.getLogger().info(Variables.logPrefix + "Enabling Event Classes... ");
+        Bukkit.getServer().getPluginManager().registerEvents(new MiscEvents(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new LifeEvents(lifeConfig, lifeConfigFile), this);
         Bukkit.getServer().getPluginManager().registerEvents(new ItemEvents(), this);
         Bukkit.getLogger().info(Variables.logPrefix + "Event Classes Enabled");
 
-        Bukkit.getLogger().info(Variables.logPrefix + "Enabling Command Classes... ");
-        Objects.requireNonNull(getCommand("withdraw")).setExecutor(new WithdrawCommand(lifeConfig, lifeConfigFile));
+        Bukkit.getLogger().info(Variables.logPrefix + "Enabling Commands... ");
+        Objects.requireNonNull(getCommand("withdraw")).setExecutor(new WithdrawCommand(lifeConfig, lifeConfigFile, this));
         Objects.requireNonNull(getCommand("getLDHelm")).setExecutor(new LDHCmd());
         Objects.requireNonNull(getCommand("getLDBoots")).setExecutor(new LDBCmd());
         Objects.requireNonNull(getCommand("getLDChestplate")).setExecutor(new LDCCmd());
@@ -96,7 +101,7 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
         Objects.requireNonNull(getCommand("getLDSet")).setExecutor(new LDSCmd());
         Objects.requireNonNull(getCommand("getLShield")).setExecutor(new LSCmd());
         Objects.requireNonNull(getCommand("toggle")).setExecutor(new ToggleTI());
-        Bukkit.getLogger().info(Variables.logPrefix + "Command Classes Enabled");
+        Bukkit.getLogger().info(Variables.logPrefix + "Commands Enabled");
 
         LifeEvents.lifeBannedPlayers = (List<OfflinePlayer>) lifeConfig.get("lifeBannedPlayers");
         if (LifeEvents.lifeBannedPlayers == null) {
@@ -134,9 +139,7 @@ public final class GrassBlockSMPPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
         Bukkit.getLogger().info(Variables.logPrefix + "Shutting Down GrassBlockSMP Custom Plugin...");
-
     }
 
     public void checkTime() {

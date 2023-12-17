@@ -1,6 +1,6 @@
 package com.riverstone.unknown303.grassblocksmpplugin.items;
 
-import com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles.Variables;
+import com.riverstone.unknown303.grassblocksmpplugin.references.Variables;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

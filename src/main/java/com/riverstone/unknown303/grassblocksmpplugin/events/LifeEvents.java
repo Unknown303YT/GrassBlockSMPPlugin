@@ -1,6 +1,5 @@
 package com.riverstone.unknown303.grassblocksmpplugin.events;
 
-import com.codingforcookies.armorequip.ArmorEquipEvent;
 import com.riverstone.unknown303.grassblocksmpplugin.GrassBlockSMPPlugin;
 import com.riverstone.unknown303.grassblocksmpplugin.guis.UnbanScreen;
 import com.riverstone.unknown303.grassblocksmpplugin.items.LifeItemsManager;
@@ -53,6 +52,7 @@ public class LifeEvents implements Listener {
                 lives = 0;
                 lifeBannedPlayers.add(offlinePlayer);
                 Bukkit.getBanList(BanList.Type.NAME).addBan(playerName, "§4§lYou Have Lost All Your Lives.\n§r§fYou can be unbanned by a player using the Beacon of Revival.", null, "console");
+                player.kickPlayer("§4§lYou Have Lost All Your Lives.\n§r§fYou can be unbanned by a player using the Beacon of Revival.");
                 newLifeConfig.set(player.getUniqueId().toString() + "-lives", 0);
                 newLifeConfig.set("lifeBannedPlayers", lifeBannedPlayers);
             } else {
@@ -149,13 +149,6 @@ public class LifeEvents implements Listener {
             }
         } else {
             return;
-        }
-    }
-
-    @EventHandler
-    public void onArmorEquip(ArmorEquipEvent event) {
-        if (event.getNewArmorPiece().equals(Material.ELYTRA)) {
-            event.setCancelled(true);
         }
     }
 }

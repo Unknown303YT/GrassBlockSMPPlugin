@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="grassblocksmpplugin:jar" />
+      <artifact name="GrassBlockPlugin:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,23 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1db23e6-1cfd-4395-8880-25104be38e83" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/GrassBlockPlugin_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/admincmds/NameCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/events/MiscEvents.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrassBlockSMPPlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/GrassBlockSMPPlugin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/GrassBlockPlugin_jar/GrassBlockPlugin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/GrassBlockPlugin_jar/GrassBlockPlugin.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/admincmds/toggles/ToggleTI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/admincmds/toggles/ToggleTI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/lifecmds/WithdrawCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/lifecmds/WithdrawCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/events/ItemEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/events/ItemEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDBCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDBCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDCCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDCCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDHCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDHCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDLCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDLCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDSCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDSCmd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LSCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LSCmd.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/events/LifeEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/events/LifeEvents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/guis/UnbanScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/guis/UnbanScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/items/AdminItemsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/items/AdminItemsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/items/LifeItemsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/items/LifeItemsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/items/OnceoffItemsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/items/OnceoffItemsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/items/TeamItemsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/items/TeamItemsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/multiclassreferencefiles/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/references/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/multiclassreferencefiles/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/riverstone/unknown303/grassblocksmpplugin/references/Variables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin$1$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin$1$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin$1$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/GrassBlockSMPPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/admincmds/FreezeCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/admincmds/FreezeCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/admincmds/toggles/ToggleTI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/admincmds/toggles/ToggleTI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/lifecmds/WithdrawCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/lifecmds/WithdrawCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDBCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDBCmd.class" afterDir="false" />
@@ -35,20 +47,27 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDLCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDLCmd.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDSCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LDSCmd.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LSCmd.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/commands/ticmds/LSCmd.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/events/ItemEvents.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/events/ItemEvents.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/events/LifeEvents.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/events/LifeEvents.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/guis/UnbanScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/guis/UnbanScreen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/items/AdminItemsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/items/AdminItemsManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/items/LifeItemsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/items/LifeItemsManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/items/OnceoffItemsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/items/OnceoffItemsManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/items/TeamItemsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/items/TeamItemsManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/multiclassreferencefiles/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/multiclassreferencefiles/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/multiclassreferencefiles/Variables.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/multiclassreferencefiles/Variables.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/multiclassreferencefiles/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/riverstone/unknown303/grassblocksmpplugin/multiclassreferencefiles/Variables.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,12 +84,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/aidan/Downloads/litematica-printer-multiversion",
+    "last_opened_file_path": "D:/Coding/MC/Libraries/Plugins/ArmorEquipEvent-1.7.6.jar",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
   <component name="RunManager">
@@ -91,6 +111,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-17.0.9-temurin-17.0.9-249ae16d76d6-579202fe" />
         <option value="jdk-17.0.9-temurin-17.0.9-8336523bb0d9-f48365a1" />
       </set>
     </attachedChunks>

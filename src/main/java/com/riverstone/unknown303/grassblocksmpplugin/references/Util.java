@@ -1,4 +1,4 @@
-package com.riverstone.unknown303.grassblocksmpplugin.multiclassreferencefiles;
+package com.riverstone.unknown303.grassblocksmpplugin.references;
 
 import com.riverstone.unknown303.grassblocksmpplugin.GrassBlockSMPPlugin;
 

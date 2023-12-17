@@ -1,5 +1,5 @@
 name: GrassBlockSMPPlugin
-version: '2.6'
+version: '2.8'
 main: com.riverstone.unknown303.grassblocksmpplugin.GrassBlockSMPPlugin
 api-version: '1.20'
 authors: [Unknown_303YT, JoeyDee]
@@ -39,6 +39,10 @@ commands:
     permission: grassblocksmpplugin.toggles
   frz:
     description: Freeze people
+    usage: /<command>
+    permission: grassblocksmpplugin.admin
+  name:
+    description: Set Custom Display Names
     usage: /<command>
     permission: grassblocksmpplugin.admin
 
